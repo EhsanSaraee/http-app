@@ -1,8 +1,11 @@
+import Discussion from './Containers/Discussion/Discussion';
+import './app.css';
+
 const App = () => {
    return (
-      <>
-         <h1>HTTP App</h1>
-      </>
+      <div className="app">
+         <Discussion />
+      </div>
    );
 };
 
