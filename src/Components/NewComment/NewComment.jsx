@@ -47,6 +47,7 @@ const NewComment = () => {
                onChange={changeHandler}
             />
          </div>
+         <button onClick={postCommentHandler}>Add New Comment</button>
       </div>
    );
 };
