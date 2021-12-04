@@ -1,8 +1,9 @@
-import style from './FullComment.module.css';
+import './fullComment.css';
 
-const FullComment = () => {
+const FullComment = ({ commentId }) => {
+   console.log(commentId);
    return (
-      <div className={style.fullComment}>
+      <div className="fullComment">
          <p>name</p>
          <p>email</p>
          <p>body</p>

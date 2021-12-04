@@ -1,10 +1,11 @@
-import style from './Comment.module.css';
+import './comment.css';
 
-const Comment = () => {
+const Comment = ({ comment, onClick }) => {
+   const { name, email } = comment;
    return (
-      <div className={style.comment}>
-         <p>name</p>
-         <p>email</p>
+      <div className="comment" onClick={onClick}>
+         <p>name : {name}</p>
+         <p>email : {email}</p>
       </div>
    );
 };
