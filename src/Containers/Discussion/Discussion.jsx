@@ -7,7 +7,7 @@ import './discussion.css';
 
 const Discussion = () => {
    const [comments, setComments] = useState(null);
-   const [selectedId, setSelectedId] = useState(null);
+   const [selectedID, setSelectedID] = useState(null);
 
    useEffect(() => {
       const getComments = async () => {
@@ -24,7 +24,7 @@ const Discussion = () => {
    }, []);
 
    const selectCommentHandler = (id) => {
-      setSelectedId(id);
+      setSelectedID(id);
    };
 
    return (
@@ -43,7 +43,7 @@ const Discussion = () => {
             )}
          </section>
          <section>
-            <FullComment commentId={selectedId} />
+            <FullComment commentID={selectedID} />
          </section>
          <section>
             <NewComment />
