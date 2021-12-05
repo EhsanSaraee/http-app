@@ -2,13 +2,13 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './fullComment.css';
 
-const FullComment = ({ commentID }) => {
+const FullComment = ({ commentID, onDelete }) => {
    const [comment, setComment] = useState(null);
 
    useEffect(() => {
       commentID &&
          axios
-            .get(`https://jsonplaceholder.typicode.com/comments/${commentID}`)
+            .get(`http://localhost:3001/comments/${commentID}`)
             .then(({ data }) => setComment(data))
             .catch();
    }, [commentID]);
@@ -24,6 +24,7 @@ const FullComment = ({ commentID }) => {
             <p>{name}</p>
             <p>{email}</p>
             <p>{body}</p>
+            <button onClick={onDelete}>Delete</button>
          </div>
       );
    }
