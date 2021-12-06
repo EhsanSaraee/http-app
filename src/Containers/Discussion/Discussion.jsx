@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Comment from '../../Components/Comment/Comment';
 import FullComment from '../../Components/FullComment/FullComment';
 import NewComment from '../../Components/NewComment/NewComment';
+import { toast } from 'react-toastify';
 import './discussion.css';
 
 const Discussion = () => {
@@ -16,7 +17,6 @@ const Discussion = () => {
             const { data } = await axios.get('http://localhost:3001/comments');
             setComments(data);
          } catch (error) {
-            console.log(error);
             setError(true);
          }
       };
@@ -41,7 +41,8 @@ const Discussion = () => {
    const renderComments = () => {
       let renderValue = <p>Loading...</p>;
       if (error) {
-         renderValue = <p>fetching data failed!</p>;
+         renderValue = <p>fetching data Failed!</p>;
+         toast.error('there is an error!');
       }
       if (comments && !error) {
          renderValue = comments.map((comment) => (
