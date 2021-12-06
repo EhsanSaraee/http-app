@@ -34,7 +34,7 @@ const Discussion = () => {
          );
          setComments(data);
       } catch (error) {
-         console.log(error);
+         setError(true);
       }
    };
 
@@ -55,6 +55,19 @@ const Discussion = () => {
       return renderValue;
    };
 
+   const postCommentHandler = async (comment) => {
+      try {
+         await axios.post('http://localhost:3001/comments', {
+            ...comment,
+            postID: 10,
+         });
+         const { data } = await axios.get('http://localhost:3001/comments');
+         setComments(data);
+      } catch (error) {
+         setError(true);
+      }
+   };
+
    return (
       <main>
          <section>{renderComments()}</section>
@@ -62,7 +75,7 @@ const Discussion = () => {
             <FullComment commentID={selectedID} onDelete={deleteHandler} />
          </section>
          <section>
-            <NewComment />
+            <NewComment onAdd={postCommentHandler} />
          </section>
       </main>
    );

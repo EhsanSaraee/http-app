@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { useState } from 'react';
 import './newComment.css';
 
-const NewComment = () => {
+const NewComment = ({ onAdd }) => {
    const [comment, setComment] = useState({
       name: '',
       email: '',
@@ -11,16 +10,6 @@ const NewComment = () => {
 
    const changeHandler = (event) => {
       setComment({ ...comment, [event.target.name]: event.target.value });
-   };
-
-   const postCommentHandler = () => {
-      axios
-         .post('http://localhost:3001/comments', {
-            ...comment,
-            postID: 10,
-         })
-         .then(({ data }) => console.log(data))
-         .catch();
    };
 
    return (
@@ -47,7 +36,7 @@ const NewComment = () => {
                onChange={changeHandler}
             />
          </div>
-         <button onClick={postCommentHandler}>Add New Comment</button>
+         <button onClick={() => onAdd(comment)}>Add New Comment</button>
       </div>
    );
 };
