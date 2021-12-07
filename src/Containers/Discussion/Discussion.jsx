@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react';
 import Comment from '../../Components/Comment/Comment';
 import FullComment from '../../Components/FullComment/FullComment';
 import NewComment from '../../Components/NewComment/NewComment';
+import {
+   getAllComments,
+   addNewComment,
+} from '../../Services/commentsService.js';
 import { toast } from 'react-toastify';
 import './discussion.css';
 
@@ -14,7 +18,7 @@ const Discussion = () => {
    useEffect(() => {
       const getComments = async () => {
          try {
-            const { data } = await axios.get('http://localhost:3001/comments');
+            const { data } = await getAllComments();
             setComments(data);
          } catch (error) {
             setError(true);
@@ -47,11 +51,11 @@ const Discussion = () => {
 
    const postCommentHandler = async (comment) => {
       try {
-         await axios.post('http://localhost:3001/comments', {
+         await addNewComment({
             ...comment,
             postID: 10,
          });
-         const { data } = await axios.get('http://localhost:3001/comments');
+         const { data } = await getAllComments();
          setComments(data);
       } catch (error) {
          setError(true);
@@ -66,6 +70,7 @@ const Discussion = () => {
                commentID={selectedID}
                setComments={setComments}
                setError={setError}
+               setSelectedID={setSelectedID}
             />
          </section>
          <section>
