@@ -27,17 +27,6 @@ const Discussion = () => {
       setSelectedID(id);
    };
 
-   const deleteHandler = async () => {
-      try {
-         const { data } = await axios.delete(
-            `http://localhost:3001/comments/${selectedID}`
-         );
-         setComments(data);
-      } catch (error) {
-         setError(true);
-      }
-   };
-
    const renderComments = () => {
       let renderValue = <p>Loading...</p>;
       if (error) {
@@ -73,7 +62,11 @@ const Discussion = () => {
       <main>
          <section>{renderComments()}</section>
          <section>
-            <FullComment commentID={selectedID} onDelete={deleteHandler} />
+            <FullComment
+               commentID={selectedID}
+               setComments={setComments}
+               setError={setError}
+            />
          </section>
          <section>
             <NewComment onAdd={postCommentHandler} />
