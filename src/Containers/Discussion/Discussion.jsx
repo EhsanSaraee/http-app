@@ -66,6 +66,7 @@ const Discussion = () => {
                commentID={selectedID}
                setComments={setComments}
                setError={setError}
+               setSelectedID={setSelectedID}
             />
          </section>
          <section>
