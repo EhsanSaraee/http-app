@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { addNewComment } from '../../Services/commentsService';
 import './newComment.css';
 
-const NewComment = ({ onAdd }) => {
+const NewComment = ({ history }) => {
    const [comment, setComment] = useState({
       name: '',
       email: '',
@@ -18,11 +19,8 @@ const NewComment = ({ onAdd }) => {
             ...comment,
             postID: 10,
          });
-         const { data } = await getAllComments();
-         setComments(data);
-      } catch (error) {
-         setError(true);
-      }
+         history.push('/');
+      } catch (error) {}
    };
 
    return (
@@ -49,7 +47,9 @@ const NewComment = ({ onAdd }) => {
                onChange={changeHandler}
             />
          </div>
-         <button onClick={() => onAdd(comment)}>Add New Comment</button>
+         <button onClick={() => postCommentHandler(comment)}>
+            Add New Comment
+         </button>
       </div>
    );
 };

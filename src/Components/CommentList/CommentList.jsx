@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import Comment from './Comment/Comment';
-import {
-   getAllComments,
-   addNewComment,
-} from '../../Services/commentsService.js';
+import { getAllComments } from '../../Services/commentsService.js';
 import { toast } from 'react-toastify';
 import './commentList.css';
 import { Link } from 'react-router-dom';
@@ -39,8 +36,6 @@ const CommentList = () => {
       }
       return renderValue;
    };
-
-   
 
    return <section>{renderComments()}</section>;
 };
