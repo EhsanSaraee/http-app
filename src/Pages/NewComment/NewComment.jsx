@@ -12,6 +12,19 @@ const NewComment = ({ onAdd }) => {
       setComment({ ...comment, [event.target.name]: event.target.value });
    };
 
+   const postCommentHandler = async (comment) => {
+      try {
+         await addNewComment({
+            ...comment,
+            postID: 10,
+         });
+         const { data } = await getAllComments();
+         setComments(data);
+      } catch (error) {
+         setError(true);
+      }
+   };
+
    return (
       <div className="newComment">
          <div>
