@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
-   getAllComments,
    deleteComment,
    getSingleComment,
 } from '../../Services/commentsService.js';
 import './fullComment.css';
 
-const FullComment = ({ setComments, setError, setSelectedID, match }) => {
+const FullComment = ({ match, history }) => {
    const [comment, setComment] = useState(null);
 
    const commentID = match.params.id;
@@ -22,13 +20,9 @@ const FullComment = ({ setComments, setError, setSelectedID, match }) => {
    const deleteHandler = async () => {
       try {
          await deleteComment(commentID);
-         const { data } = await getAllComments();
-         setComments(data);
+         history.push('/');
          setComment(null);
-         setSelectedID(null);
-      } catch (error) {
-         setError(true);
-      }
+      } catch (error) {}
    };
 
    let commentMessage = <p>please select a comment!</p>;

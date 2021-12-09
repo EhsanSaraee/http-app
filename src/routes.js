@@ -1,4 +1,4 @@
-import FullComment from './Components/FullComment/FullComment';
+import FullComment from './Pages/FullComment/FullComment';
 import HomePage from './Pages/HomePage';
 import NewComment from './Pages/NewComment/NewComment';
 import NotFound from './Pages/NotFound';
