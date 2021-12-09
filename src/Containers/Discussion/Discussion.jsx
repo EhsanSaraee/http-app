@@ -65,7 +65,7 @@ const Discussion = () => {
    return (
       <main>
          <section>{renderComments()}</section>
-         <section>
+         {/* <section>
             <FullComment
                commentID={selectedID}
                setComments={setComments}
@@ -75,7 +75,7 @@ const Discussion = () => {
          </section>
          <section>
             <NewComment onAdd={postCommentHandler} />
-         </section>
+         </section> */}
       </main>
    );
 };

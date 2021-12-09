@@ -3,3 +3,41 @@
    padding: 0;
    box-sizing: border-box;
 }
+
+.activeLink {
+   color: rgb(161, 17, 197);
+}
+
+a {
+   text-decoration: none;
+   color: #444;
+}
+
+ul {
+   list-style: none;
+   background-color: #efefef;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   font-size: 18px;
+   height: 60px;
+}
+
+ul li {
+   margin-left: 20px;
+}
+
+footer {
+   background-color: rgb(225, 225, 225);
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}
+
+.aside {
+   background-color: rgb(236, 236, 236) !important;
+}
+
+.activeTab {
+   color: rgb(80, 80, 245);
+}
