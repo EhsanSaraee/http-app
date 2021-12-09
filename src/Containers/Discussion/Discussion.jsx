@@ -9,6 +9,7 @@ import {
 } from '../../Services/commentsService.js';
 import { toast } from 'react-toastify';
 import './discussion.css';
+import { Link } from 'react-router-dom';
 
 const Discussion = () => {
    const [comments, setComments] = useState(null);
@@ -39,11 +40,12 @@ const Discussion = () => {
       }
       if (comments && !error) {
          renderValue = comments.map((comment) => (
-            <Comment
-               key={comment.id}
-               comment={comment}
-               onClick={() => selectCommentHandler(comment.id)}
-            />
+            <Link key={comment.id} to={`/comments/${comment.id}`}>
+               <Comment
+                  comment={comment}
+                  onClick={() => selectCommentHandler(comment.id)}
+               />
+            </Link>
          ));
       }
       return renderValue;

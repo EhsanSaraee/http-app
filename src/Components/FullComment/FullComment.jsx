@@ -7,8 +7,10 @@ import {
 } from '../../Services/commentsService.js';
 import './fullComment.css';
 
-const FullComment = ({ commentID, setComments, setError, setSelectedID }) => {
+const FullComment = ({ setComments, setError, setSelectedID, match }) => {
    const [comment, setComment] = useState(null);
+
+   const commentID = match.params.id;
 
    useEffect(() => {
       commentID &&
